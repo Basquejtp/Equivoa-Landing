@@ -330,7 +330,7 @@
       <div class="eyebrow">Founding Partners</div>
       <h2>Be first on the yard sheet.</h2>
       <p>Founding Partners get preferential placement, locked-in low commission, and a direct line to the team shaping how Equivoa works. Spaces are limited on purpose: we're building this with a small group of riders, yards and coaches first, not launching to a thousand at once.</p>
-      <a href="#waitlist" class="btn-primary">Apply as a Founding Partner</a>
+      <a href="#waitlist" class="btn-primary" onclick="document.getElementById('foundingInterest').value='true';">Apply as a Founding Partner</a>
     </div>
     <div class="badge-card">
       <div class="row"><span>Status</span><b>Founding Partner</b></div>
@@ -358,6 +358,7 @@
         <label><input type="radio" name="role" value="coach" style="margin-right:6px;">I teach / coach</label>
       </div>
       <p id="waitlistError" style="color:#a9673d; font-size:13px; margin-top:14px; display:none;"></p>
+      <input type="hidden" id="foundingInterest" name="founding" value="false">
     </form>
     <script>
       document.getElementById('waitlistForm').addEventListener('submit', async function(e){
@@ -367,6 +368,7 @@
         const errorEl = document.getElementById('waitlistError');
         const email = form.querySelector('#email').value;
         const role = form.querySelector('input[name="role"]:checked').value;
+        const founding = form.querySelector('#foundingInterest').value === 'true';
 
         errorEl.style.display = 'none';
         button.textContent = 'Joining...';
@@ -376,7 +378,7 @@
           const res = await fetch('/api/subscribe', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ email: email, role: role })
+            body: JSON.stringify({ email: email, role: role, founding: founding })
           });
           const data = await res.json();
           if (res.ok && data.success) {
@@ -404,5 +406,3 @@
 
 </body>
 </html>
-
-
