@@ -346,30 +346,52 @@
   <div class="wrap">
     <h2>Get in before the gate opens.</h2>
     <p>Tell us who you are and we'll bring you in with the first cohort — as a rider, a yard, or a coach.</p>
-    <form id="waitlistForm" method="POST"
-          action="https://df67d53e.sibforms.com/serve/MUIFAJJDtjANSm16LMmMfbgsQ6mUY7mta40lYMzFteC7cAC3HxBtumolkmmUWOuzaqwP5vHNbjlTq_JK9qsA-coJN4fGL5up84h86soSDyDKJBHkQVMTND5mTo1tjvm9XLP56Fl3FK9k6ZJDeMNxwOUC8gYRnOlzj-a-0xl2Y2FHmcXbrfziOe7GGGESonIPmZ_fdVIikNdVdCTTXA=="
-          target="brevo_hidden_frame"
-          onsubmit="this.querySelector('button').textContent='You\'re on the list.'; this.querySelector('button').disabled=true;">
+    <form id="waitlistForm">
       <div class="form-row">
         <label class="sr-only" for="email">Email address</label>
         <input id="email" type="email" name="EMAIL" placeholder="you@email.com" required>
         <button type="submit" class="btn-primary">Join the waitlist</button>
       </div>
       <div class="role-toggle">
-        <label><input type="radio" name="role" value="rider" style="margin-right:6px;" checked onchange="document.getElementById('roleHidden').value=this.value">I'm a rider / owner</label>
-        <label><input type="radio" name="role" value="yard" style="margin-right:6px;" onchange="document.getElementById('roleHidden').value=this.value">I run a yard</label>
-        <label><input type="radio" name="role" value="coach" style="margin-right:6px;" onchange="document.getElementById('roleHidden').value=this.value">I teach / coach</label>
+        <label><input type="radio" name="role" value="rider" style="margin-right:6px;" checked>I'm a rider / owner</label>
+        <label><input type="radio" name="role" value="yard" style="margin-right:6px;">I run a yard</label>
+        <label><input type="radio" name="role" value="coach" style="margin-right:6px;">I teach / coach</label>
       </div>
-      <!-- Brevo required hidden field -->
-      <input type="hidden" name="locale" value="en">
-      <!-- Role selection: mapped to a Brevo custom attribute called ROLE.
-           Create a text attribute named ROLE in Brevo (Contacts > Settings > Contact attributes)
-           for this to actually be saved against each contact. -->
-      <input type="hidden" id="roleHidden" name="ROLE" value="rider">
+      <p id="waitlistError" style="color:#a9673d; font-size:13px; margin-top:14px; display:none;"></p>
     </form>
-    <!-- Hidden iframe target so the Brevo submission happens in the background,
-         keeping visitors on your page instead of redirecting to sibforms.com -->
-    <iframe name="brevo_hidden_frame" style="display:none;" title="form-submit-target"></iframe>
+    <script>
+      document.getElementById('waitlistForm').addEventListener('submit', async function(e){
+        e.preventDefault();
+        const form = e.target;
+        const button = form.querySelector('button');
+        const errorEl = document.getElementById('waitlistError');
+        const email = form.querySelector('#email').value;
+        const role = form.querySelector('input[name="role"]:checked').value;
+ 
+        errorEl.style.display = 'none';
+        button.textContent = 'Joining...';
+        button.disabled = true;
+ 
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email: email, role: role })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            button.textContent = "You're on the list.";
+          } else {
+            throw new Error(data.error || 'Something went wrong');
+          }
+        } catch (err) {
+          button.textContent = 'Join the waitlist';
+          button.disabled = false;
+          errorEl.textContent = "Couldn't submit right now — please try again.";
+          errorEl.style.display = 'block';
+        }
+      });
+    </script>
   </div>
 </section>
  
@@ -383,7 +405,3 @@
 </body>
 </html>
  
-
-
-
-
