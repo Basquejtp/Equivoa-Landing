@@ -21,6 +21,7 @@ async function handleSubscribe(request, env) {
     const data = await request.json();
     const email = (data.email || "").trim();
     const role = (data.role || "rider").trim();
+    const founding = data.founding === true;
 
     if (!email || !email.includes("@")) {
       return new Response(JSON.stringify({ error: "Valid email required" }), {
@@ -28,6 +29,8 @@ async function handleSubscribe(request, env) {
         headers: corsHeaders
       });
     }
+
+    const listIds = founding ? [3, 4] : [3];
 
     const brevoRes = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -39,7 +42,7 @@ async function handleSubscribe(request, env) {
       body: JSON.stringify({
         email: email,
         attributes: { ROLE: role },
-        listIds: [3],
+        listIds: listIds,
         updateEnabled: true
       })
     });
