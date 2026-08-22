@@ -348,7 +348,7 @@
     <p>Tell us who you are and we'll bring you in with the first cohort — as a rider, a yard, or a coach.</p>
     <form id="waitlistForm" method="POST"
           action="https://df67d53e.sibforms.com/serve/MUIFAJJDtjANSm16LMmMfbgsQ6mUY7mta40lYMzFteC7cAC3HxBtumolkmmUWOuzaqwP5vHNbjlTq_JK9qsA-coJN4fGL5up84h86soSDyDKJBHkQVMTND5mTo1tjvm9XLP56Fl3FK9k6ZJDeMNxwOUC8gYRnOlzj-a-0xl2Y2FHmcXbrfziOe7GGGESonIPmZ_fdVIikNdVdCTTXA=="
-         
+          target="brevo_hidden_frame"
           onsubmit="this.querySelector('button').textContent='You\'re on the list.'; this.querySelector('button').disabled=true;">
       <div class="form-row">
         <label class="sr-only" for="email">Email address</label>
@@ -360,8 +360,7 @@
         <label><input type="radio" name="role" value="yard" style="margin-right:6px;" onchange="document.getElementById('roleHidden').value=this.value">I run a yard</label>
         <label><input type="radio" name="role" value="coach" style="margin-right:6px;" onchange="document.getElementById('roleHidden').value=this.value">I teach / coach</label>
       </div>
-      <!-- Brevo required hidden fields -->
-      <input type="text" name="email_address_check" value="" style="display:none;" tabindex="-1" autocomplete="off">
+      <!-- Brevo required hidden field -->
       <input type="hidden" name="locale" value="en">
       <!-- Role selection: mapped to a Brevo custom attribute called ROLE.
            Create a text attribute named ROLE in Brevo (Contacts > Settings > Contact attributes)
