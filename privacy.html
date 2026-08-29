@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — Equivoa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="equivoa.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>
+      Equivoa
+    </a>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="how-it-works.html">How it works</a>
+        <a href="find.html">Find a place</a>
+        <a href="list-your-yard.html">List your yard</a>
+        <a href="about.html">About</a>
+        <a href="account.html" id="navAuthLink">Sign in</a>
+      </div>
+      <a href="find.html" class="nav-cta">Build your profile</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Privacy</div>
+    <h1>Your profile makes your search better.<br>You control what you <em>share</em>.</h1>
+    <p class="lede">This page describes the principles Equivoa is being built around. It isn't a substitute for a full legal privacy policy — that gets written and reviewed properly before real accounts and real data collection go live.</p>
+  </div>
+</section>
+
+<section style="padding:0 0 80px;">
+  <div class="wrap">
+    <div class="ledger-row" style="border-top:1px solid var(--line); padding-top:24px;">
+      <div class="ledger-num">01</div>
+      <div class="ledger-title">We don't sell identifiable profiles</div>
+      <div class="ledger-desc">Your preferences exist to get you better matches. They are not a product we sell to third parties.</div>
+    </div>
+    <div class="ledger-row">
+      <div class="ledger-num">02</div>
+      <div class="ledger-title">You choose what you share</div>
+      <div class="ledger-desc">Every preference on your profile is optional. Fewer answers means broader, less tailored matches — not a locked door.</div>
+    </div>
+    <div class="ledger-row">
+      <div class="ledger-num">03</div>
+      <div class="ledger-title">Aggregated insight, not individual tracking</div>
+      <div class="ledger-desc">Where we look at patterns across many owners — say, where demand for indoor arenas outstrips supply in a region — that analysis is designed to work on aggregated, anonymised data, not on tracking you individually.</div>
+    </div>
+    <div class="ledger-row">
+      <div class="ledger-num">04</div>
+      <div class="ledger-title">Anything beyond this needs your consent</div>
+      <div class="ledger-desc">Any future use of your data beyond making your own search better — for example, a relevant equestrian business reaching people who've expressed interest in that category — would be explicit and permission-based, not automatic or hidden in fine print.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>Equivoa</div>
+        <p>Paddocks, stables and riding schools, all under one roof — built for UK horse owners and the yards that look after them.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="find.html">Find a place</a><a href="profile.html">Your profile</a><a href="how-it-works.html">How it works</a></div>
+        <div class="footer-col"><h4>For yards</h4><a href="list-your-yard.html">List your yard</a><a href="for-yards.html">Why Equivoa</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fine">© 2026 EQUIVOA</div>
+      <div class="fine">PADDOCKS · STABLES · RIDING SCHOOLS</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="equivoa-config.js"></script>
+<script src="equivoa.js"></script>
+</body>
+</html>

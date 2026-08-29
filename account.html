@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Equivoa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="equivoa.css">
+<style>
+  .account-box{ max-width:440px; background:#fff; border:1px solid var(--line); border-radius:3px; padding:36px;}
+  .account-box h2{font-family:var(--serif); font-size:26px; font-weight:600; color:var(--green-deep); margin-bottom:10px;}
+  .account-box p{font-size:14px; color:rgba(20,32,26,0.65); line-height:1.55; margin-bottom:22px;}
+  .account-box label{display:block; font-family:var(--mono); font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:rgba(20,32,26,0.5); margin-bottom:8px;}
+  .account-box input[type=email]{ width:100%; padding:13px 16px; border:1px solid var(--line); border-radius:2px; font-family:var(--sans); font-size:15px; margin-bottom:18px;}
+  .account-box input[type=email]:focus{outline:2px solid var(--tan-saddle); outline-offset:2px;}
+  .role-pick{display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap;}
+  .role-pick label{ font-family:var(--mono); font-size:12px; padding:8px 14px; border:1px solid var(--line); border-radius:20px; cursor:pointer; color:rgba(20,32,26,0.65); text-transform:none; letter-spacing:0.2px; margin:0;}
+  .account-note{font-family:var(--mono); font-size:11.5px; color:rgba(20,32,26,0.5); margin-top:16px; line-height:1.6;}
+  .signed-in-row{display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-top:1px dashed var(--line); font-size:14px;}
+  .signed-in-row:first-of-type{border-top:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>
+      Equivoa
+    </a>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="how-it-works.html">How it works</a>
+        <a href="find.html">Find a place</a>
+        <a href="list-your-yard.html">List your yard</a>
+        <a href="about.html">About</a>
+        <a href="account.html" id="navAuthLink" aria-current="page">Sign in</a>
+      </div>
+      <a href="find.html" class="nav-cta">Build your profile</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-hero" style="padding-bottom:56px;">
+  <div class="wrap">
+    <div class="eyebrow">Your account</div>
+    <h1>No passwords.<br>Just your <em>email</em>.</h1>
+    <p class="lede" style="margin-bottom:36px;">We'll send you a one-time link — click it and you're in. Nothing to remember, nothing to leak.</p>
+    <div id="accountRoot" class="account-box">Loading…</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>Equivoa</div>
+        <p>Paddocks, stables and riding schools, all under one roof — built for UK horse owners and the yards that look after them.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="find.html">Find a place</a><a href="profile.html">Your profile</a><a href="how-it-works.html">How it works</a></div>
+        <div class="footer-col"><h4>For yards</h4><a href="list-your-yard.html">List your yard</a><a href="for-yards.html">Why Equivoa</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fine">© 2026 EQUIVOA</div>
+      <div class="fine">PADDOCKS · STABLES · RIDING SCHOOLS</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="equivoa-config.js"></script>
+<script src="equivoa.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listing — Equivoa</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="equivoa.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>
+      Equivoa
+    </a>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="how-it-works.html">How it works</a>
+        <a href="find.html" aria-current="page">Find a place</a>
+        <a href="list-your-yard.html">List your yard</a>
+        <a href="about.html">About</a>
+        <a href="account.html" id="navAuthLink">Sign in</a>
+      </div>
+      <a href="find.html" class="nav-cta">Build your profile</a>
+      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div id="listingRoot"><!-- rendered by equivoa.js from ?id= --></div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>Equivoa</div>
+        <p>Paddocks, stables and riding schools, all under one roof — built for UK horse owners and the yards that look after them.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h4>Product</h4><a href="find.html">Find a place</a><a href="profile.html">Your profile</a><a href="how-it-works.html">How it works</a></div>
+        <div class="footer-col"><h4>For yards</h4><a href="list-your-yard.html">List your yard</a><a href="for-yards.html">Why Equivoa</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="fine">© 2026 EQUIVOA</div>
+      <div class="fine">PADDOCKS · STABLES · RIDING SCHOOLS</div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="equivoa-config.js"></script>
+<script src="equivoa.js"></script>
+</body>
+</html>
