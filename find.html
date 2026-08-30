@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find a Place — Equivoa</title>
+<title>Find a Place | Equivoa</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet">
 <link rel="stylesheet" href="equivoa.css">
 </head>
 <body>
@@ -36,31 +37,36 @@
   <div class="wrap">
     <div class="eyebrow">Build your profile &amp; explore</div>
     <h1>What matters to <em>your</em> horse?</h1>
-    <p class="lede">Tap what applies below — tap again to raise it from "preferred" to "must-have". Your matches update live underneath.</p>
+    <p class="lede">Tap something to add it. Tap the dots to set how much it matters. Your matches update live below.</p>
     <div id="authNote" class="hero-note" style="margin-top:18px;"></div>
   </div>
 </section>
 
 <section style="padding:48px 0 90px;">
-  <div class="wrap">
-    <div class="chip-panel">
-      <div class="chip-panel-head">
-        <div>
-          <h2>Tell us what matters</h2>
-          <p>Tap once for preferred, twice for important, three times for a must-have. Tap a fourth time to clear it.</p>
-        </div>
-        <div class="chip-legend">
-          <span><i style="background:#fff; border:1.5px solid var(--line);"></i>Not selected</span>
-          <span><i style="background:rgba(169,103,61,0.35);"></i>Preferred</span>
-          <span><i style="background:var(--tan-saddle);"></i>Important</span>
-          <span><i style="background:var(--green-deep);"></i>Requirement</span>
-        </div>
-      </div>
-      <div id="chipPanel"></div>
-    </div>
+  <div class="wrap app-layout">
+    <aside id="sidebarRoot" class="app-sidebar"></aside>
 
-    <div id="matchToolbar" class="match-toolbar"></div>
-    <div id="matchList" class="match-list"></div>
+    <div class="app-main">
+      <div class="chip-panel">
+        <div class="chip-panel-head">
+          <div>
+            <h2>Tell us what matters</h2>
+            <p>One tap adds it as preferred. Use the dots to raise it to important or a must-have.</p>
+          </div>
+          <div class="chip-legend">
+            <span><i style="background:#fff; border:1.5px solid var(--line);"></i>Not selected</span>
+            <span><i style="background:rgba(169,103,61,0.45);"></i>Preferred</span>
+            <span><i style="background:var(--tan-saddle);"></i>Important</span>
+            <span><i style="background:var(--green-deep);"></i>Requirement</span>
+          </div>
+        </div>
+        <div id="chipPanel"></div>
+        <div class="chip-hint">TAP A CHIP TO ADD OR REMOVE IT, ANY TIME, IN ONE TAP. USE THE DOTS TO SET THE LEVEL.</div>
+      </div>
+
+      <div id="matchToolbar" class="match-toolbar"></div>
+      <div id="matchList" class="match-list"></div>
+    </div>
   </div>
 </section>
 
@@ -69,12 +75,12 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="logo"><svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/><rect x="12" y="12" width="20" height="6" fill="#a9673d"/><rect x="12" y="28" width="20" height="6" fill="#a9673d"/><circle cx="30" cy="15" r="2" fill="#1f3327"/></svg>Equivoa</div>
-        <p>Paddocks, stables and riding schools, all under one roof — built for UK horse owners and the yards that look after them.</p>
+        <p>Paddocks, stables and riding schools, all under one roof, built for UK horse owners and the yards that look after them.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col"><h4>Product</h4><a href="find.html">Find a place</a><a href="profile.html">Your profile</a><a href="how-it-works.html">How it works</a></div>
-        <div class="footer-col"><h4>For yards</h4><a href="list-your-yard.html">List your yard</a><a href="for-yards.html">Why Equivoa</a></div>
-        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div>
+        <div class="footer-col"><h4>For yards</h4><a href="list-your-yard.html">List your yard</a><a href="my-listings.html">My listings</a><a href="for-yards.html">Why Equivoa</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="our-story.html">Our story</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -86,6 +92,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="equivoa-config.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+<script src="equivoa-mapbox-config.js"></script>
 <script src="equivoa.js"></script>
 </body>
 </html>
