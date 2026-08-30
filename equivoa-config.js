@@ -12,5 +12,5 @@
 // no accounts, no saved profile, waitlist signups just show a success
 // message without being stored anywhere.
 // ============================================================
-window.EQUIVOA_SUPABASE_URL = 'Yhttps://sqmgucjjgmalfvnzihhj.supabase.co';
+window.EQUIVOA_SUPABASE_URL = 'https://sqmgucjjgmalfvnzihhj.supabase.co';
 window.EQUIVOA_SUPABASE_ANON_KEY = 'sb_publishable_xFTh9cwwJkROebouP-2cqw_Hzjm96vL';
