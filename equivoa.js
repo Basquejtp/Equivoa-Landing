@@ -122,7 +122,7 @@ async function loadListings(){
   if(!sb) return SEED_LISTINGS;
   try{
     const { data, error } = await sb.from('listings').select('*');
-    if(error || !data || data.length === 0) return SEED_LISTINGS;
+    if(error || !data || data.length === 0) return [];
     return data.map(row => ({
       id: row.id,
       name: row.name,
@@ -139,7 +139,7 @@ async function loadListings(){
       availableFrom: row.available_from,
       providerId: row.provider_id
     }));
-  } catch(e){ console.error('Loading listings failed', e); return SEED_LISTINGS; }
+  } catch(e){ console.error('Loading listings failed', e); return []; }
 }
 
 async function getListings(){
@@ -304,7 +304,7 @@ async function toggleFavorite(userId, listingId, turnOn){
 }
 
 async function joinWaitlist(email, role){
-  if(!sb) return { ok:true, offline:true };
+  if(!sb) return { ok:false, offline:true, error:'not_configured' };
   try{
     const { error } = await sb.from('waitlist').insert({ email, role });
     return { ok: !error, error };
@@ -650,8 +650,16 @@ async function initListingPage(){
   if(!root) return;
   const params = new URLSearchParams(location.search);
   const allListings = await getListings();
-  const id = params.get('id') || allListings[0].id;
-  const listing = allListings.find(l=>l.id===id) || allListings[0];
+  if(!allListings.length){
+    root.innerHTML = `<section class="page-hero"><div class="wrap"><div class="eyebrow">Directory</div><h1>Listings are <em>being added</em>.</h1><p class="lede">There are no published places to show just yet. Check back as yards join Equivoa.</p><div class="hero-ctas"><a href="find.html" class="btn-primary">Back to search</a><a href="list-your-yard.html" class="btn-secondary">List your yard</a></div></div></section>`;
+    return;
+  }
+  const id = params.get('id');
+  const listing = allListings.find(l=>l.id===id);
+  if(!listing){
+    root.innerHTML = `<section class="page-hero"><div class="wrap"><div class="eyebrow">Directory</div><h1>This listing isn't <em>available</em>.</h1><p class="lede">It may have been removed or the link may be out of date.</p><div class="hero-ctas"><a href="find.html" class="btn-primary">Return to places</a></div></div></section>`;
+    return;
+  }
   const prefs = prefsFromParams(params);
   const hasPrefs = Object.keys(prefs).length > 0;
   const {score, matched, missing} = hasPrefs ? scoreListing(listing, prefs) : {score:null,matched:[],missing:[]};
@@ -780,16 +788,33 @@ function initWaitlistForm(){
     const radio = form.querySelector(`input[name="role"][value="${role}"]`);
     if(radio) radio.checked = true;
   }
+  let feedback = form.querySelector('.form-feedback');
+  if(!feedback){
+    feedback = document.createElement('p');
+    feedback.className = 'form-feedback';
+    feedback.setAttribute('aria-live','polite');
+    feedback.style.cssText = 'max-width:440px;margin:16px auto 0;font-size:13px;';
+    form.appendChild(feedback);
+  }
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const btn = form.querySelector('button');
-    const email = form.querySelector('#email').value;
-    const selectedRole = form.querySelector('input[name="role"]:checked').value;
+    const email = form.querySelector('#email').value.trim();
+    const selectedRole = form.querySelector('input[name="role"]:checked')?.value || 'rider';
     btn.textContent = 'Joining…';
     btn.disabled = true;
+    feedback.textContent = '';
     const result = await joinWaitlist(email, selectedRole);
-    btn.textContent = result.ok ? "You're on the list." : 'Something went wrong. Try again';
-    if(!result.ok){ btn.disabled = false; }
+    if(result.ok){
+      btn.textContent = "You're on the list.";
+      feedback.textContent = 'Thanks. Your details have been received.';
+    } else {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      feedback.textContent = result.offline
+        ? 'The waitlist is not connected at the moment. Please try again later.'
+        : 'We could not submit that just now. Please check your email and try again.';
+    }
   });
 }
 
