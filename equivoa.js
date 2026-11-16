@@ -34,7 +34,12 @@ const ATTRS = {
   'training-competition': 'Competition support',
   'activity-clinics': 'Clinics',
   'activity-shows': 'Shows',
-  'activity-social': 'Social yard'
+  'activity-social': 'Social yard',
+  'yard-quiet': 'Quiet atmosphere',
+  'yard-private': 'Small or private yard',
+  'yard-rural': 'Rural setting',
+  'yard-family': 'Family-friendly yard',
+  'yard-community': 'Active yard community'
 };
 
 const GROUPS = [
@@ -42,7 +47,8 @@ const GROUPS = [
   {name:'Care', keys:['care-basic','care-full','care-hay','care-mucking','care-rugs','care-checks']},
   {name:'Facilities', keys:['facility-indoor','facility-outdoor','facility-hacking','facility-washbay','facility-tackroom','facility-walker']},
   {name:'Training', keys:['training-weekly','training-multiple','training-coach','training-competition']},
-  {name:'Activities & yard life', keys:['activity-clinics','activity-shows','activity-social']}
+  {name:'Activities', keys:['activity-clinics','activity-shows','activity-social']},
+  {name:'Yard lifestyle', keys:['yard-quiet','yard-private','yard-rural','yard-family','yard-community']}
 ];
 
 const WEIGHT_NAME = {1:'Preferred', 2:'Important', 3:'Requirement'};
@@ -306,6 +312,7 @@ async function initFindPage(){
   const allListings = await getListings();
 
   let priceMin = null, priceMax = null;
+  let locationQuery = '';
   let neededBy = null;
   let savedOnly = params.get('view') === 'saved';
   let view = 'list';
@@ -385,6 +392,10 @@ async function initFindPage(){
   /* ---- filter bar: price range, saved-only, list/map toggle ---- */
   const filterBarHtml = `
     <div class="filter-bar">
+      <div class="filter-group location-filter">
+        <label for="locationInput">LOCATION</label>
+        <input type="search" id="locationInput" placeholder="Town, county or postcode">
+      </div>
       <div class="filter-group">
         <label>NEED SPACE BY</label>
         <input type="date" id="neededByInput">
@@ -408,6 +419,7 @@ async function initFindPage(){
     <div id="mapView"></div>`;
   matchList.insertAdjacentHTML('beforebegin', filterBarHtml);
 
+  document.getElementById('locationInput').addEventListener('input', e=>{ locationQuery = e.target.value.trim().toLowerCase(); renderMatches(); });
   document.getElementById('neededByInput').addEventListener('change', e=>{ neededBy = e.target.value || null; renderMatches(); });
   document.getElementById('priceMinInput').addEventListener('input', e=>{ priceMin = e.target.value ? parseFloat(e.target.value) : null; renderMatches(); });
   document.getElementById('priceMaxInput').addEventListener('input', e=>{ priceMax = e.target.value ? parseFloat(e.target.value) : null; renderMatches(); });
@@ -425,6 +437,7 @@ async function initFindPage(){
   }
 
   function passesFilters(listing){
+    if(locationQuery && !String(listing.location || '').toLowerCase().includes(locationQuery)) return false;
     if(savedOnly && !favSet.has(listing.id)) return false;
     if(neededBy && listing.availableFrom){
       if(new Date(listing.availableFrom) > new Date(neededBy)) return false;
