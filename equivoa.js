@@ -119,7 +119,7 @@ const SEED_LISTINGS = [
 let _listingsCache = null;
 
 async function loadListings(){
-  if(!sb) return SEED_LISTINGS;
+  if(!sb) return [];
   try{
     const { data, error } = await sb.from('listings').select('*');
     if(error || !data || data.length === 0) return [];
@@ -346,9 +346,17 @@ async function initAuthUI(){
 function initNav(){
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.navlinks');
-  if(toggle && links){
-    toggle.addEventListener('click', ()=> links.classList.toggle('open'));
-  }
+  if(!toggle || !links) return;
+  const closeMenu = ()=>{
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  };
+  toggle.addEventListener('click', ()=>{
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.querySelectorAll('a').forEach(link=>link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
 }
 
 /* ============================================================
@@ -517,7 +525,9 @@ async function initFindPage(){
     }
 
     if(scored.length === 0){
-      matchList.innerHTML = `<div class="empty-state">Nothing matches these filters yet. Try widening the price range or turning off "Favourites only".</div>`;
+      matchList.innerHTML = allListings.length
+        ? `<div class="empty-state"><strong>No places match those settings.</strong><br>Try widening your price range, changing a requirement or turning off “Favourites only”.</div>`
+        : `<div class="empty-state"><strong>The directory is getting started.</strong><br>There are no published places yet. You can save your preferences now and return when yards begin listing.</div>`;
     } else {
       matchList.innerHTML = scored.map(({listing,score,matched,missing})=>{
         const price = formatPrice(listing.price);
