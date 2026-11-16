@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Find paddocks, livery yards and riding schools that suit your horse. Compare facilities, care and availability with Equivoa.">
 <title>Equivoa | Find the Right Place for Your Horse</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +23,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#content-start">Skip to content</a>
 
 <header>
   <nav>
@@ -36,7 +38,7 @@
       Equivoa
     </a>
     <div class="nav-right">
-      <div class="navlinks">
+      <div class="navlinks" id="primary-navigation">
         <a href="how-it-works.html">How it works</a>
         <a href="find.html">Find a place</a>
         <a href="list-your-yard.html">List your yard</a>
@@ -44,12 +46,13 @@
         <a href="account.html" id="navAuthLink">Sign in</a>
       </div>
       <a href="find.html" class="nav-cta">Build your profile</a>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 
-<section class="hero">
+
+<section id="content-start" tabindex="-1" class="hero">
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow">Launching UK-wide · 2026</div>
@@ -61,38 +64,16 @@
       </div>
       <div class="hero-note">NO FEES FOR YOUR FIRST 3 BOOKINGS · WE ONLY EARN WHEN YOU DO</div>
     </div>
-    <div class="field-mark">
-      <div class="cap"><span>SAMPLE LISTING PREVIEW</span><span>REF. EQ-0142</span></div>
-      <div class="listing-header">
-        <div>
-          <div class="listing-title">Hazel Copse Livery</div>
-          <div class="listing-sub">Somerset &middot; Full-service yard</div>
-        </div>
-        <div class="listing-tags">2X TURNOUT&nbsp;/&nbsp;INDOOR ARENA&nbsp;/&nbsp;WEEKLY LESSON</div>
+    <div class="hero-editorial" aria-label="Equivoa services">
+      <div class="editorial-topline"><span>THE EQUIVOA DIRECTORY</span><span>01 — 03</span></div>
+      <div class="editorial-title">Good places<br>for good horses.</div>
+      <p class="editorial-intro">A clearer way to find the right setting, whether you need grazing, a stable, day-to-day care or somewhere to ride.</p>
+      <div class="editorial-index">
+        <a href="find.html"><span class="index-no">01</span><span><b>Grazing &amp; paddocks</b><small>Space, turnout and field care</small></span><span class="index-arrow">↗</span></a>
+        <a href="find.html"><span class="index-no">02</span><span><b>Livery &amp; stabling</b><small>From DIY to full care</small></span><span class="index-arrow">↗</span></a>
+        <a href="find.html"><span class="index-no">03</span><span><b>Riding &amp; training</b><small>Schools, lessons and facilities</small></span><span class="index-arrow">↗</span></a>
       </div>
-      <div class="listing-rows">
-        <div class="listing-row">
-          <div class="lr-label">PADDOCK<br>GRAZING</div>
-          <div class="lr-detail">0.8&ndash;1.1 acre plots, post &amp; rail, field shelter option</div>
-          <div class="lr-price">£22<span>/week</span></div>
-        </div>
-        <div class="listing-row">
-          <div class="lr-label">DIY<br>LIVERY</div>
-          <div class="lr-detail">12x12ft stable, you manage turnout &amp; feed</div>
-          <div class="lr-price">£48<span>/week</span></div>
-        </div>
-        <div class="listing-row">
-          <div class="lr-label">FULL<br>CARE</div>
-          <div class="lr-detail">All daily care, exercise &amp; grooming included</div>
-          <div class="lr-price">£650<span>/month</span></div>
-        </div>
-        <div class="listing-row">
-          <div class="lr-label">RIDING<br>LESSONS</div>
-          <div class="lr-detail">Private or group, 1hr, BHS-accredited coach</div>
-          <div class="lr-price">£28<span>/lesson</span></div>
-        </div>
-      </div>
-      <div class="listing-footer"><span class="dot"></span>3 spaces left · 94% match to a sample profile</div>
+      <div class="editorial-foot">BUILT AROUND THE DETAILS THAT MATTER TO YOU</div>
     </div>
   </div>
 </section>
@@ -139,13 +120,13 @@
 <section class="dark-band" id="founding">
   <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
     <div>
-      <div class="eyebrow">Founding Farms</div>
+      <div class="eyebrow">Founding Yards</div>
       <h2>Be first on the yard sheet.</h2>
-      <p>Founding Farms get preferential placement, reduced commission for life, and hands-on help listing their yard properly, service by service, not squeezed into three generic tiers. Spaces are limited on purpose.</p>
-      <a href="index.html?role=yard#waitlist" class="btn-primary">Apply as a Founding Farm</a>
+      <p>Founding Yards get preferential placement, reduced commission for life, and hands-on help listing their yard properly, service by service, not squeezed into three generic tiers. Spaces are limited on purpose.</p>
+      <a href="index.html?role=yard#waitlist" class="btn-primary">Apply as a Founding Yard</a>
     </div>
     <div class="badge-card">
-      <div class="row"><span>Status</span><b>Founding Farm</b></div>
+      <div class="row"><span>Status</span><b>Founding Yard</b></div>
       <div class="row"><span>Commission, locked</span><b>Reduced, for life</b></div>
       <div class="row"><span>First 3 bookings</span><b>No fees</b></div>
       <div class="row"><span>Directory placement</span><b>Featured</b></div>

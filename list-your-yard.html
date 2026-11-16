@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="List your paddocks, livery, facilities or riding services on Equivoa and reach owners looking for a suitable place.">
 <title>List Your Yard | Equivoa</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="equivoa.css">
 </head>
 <body>
+<a class="skip-link" href="#content-start">Skip to content</a>
 
 <header>
   <nav>
@@ -19,7 +21,7 @@
       Equivoa
     </a>
     <div class="nav-right">
-      <div class="navlinks">
+      <div class="navlinks" id="primary-navigation">
         <a href="how-it-works.html">How it works</a>
         <a href="find.html">Find a place</a>
         <a href="list-your-yard.html" aria-current="page">List your yard</a>
@@ -27,12 +29,13 @@
         <a href="account.html" id="navAuthLink">Sign in</a>
       </div>
       <a href="find.html" class="nav-cta">Build your profile</a>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 
-<section class="page-hero">
+
+<section id="content-start" tabindex="-1" class="page-hero">
   <div class="wrap">
     <div class="eyebrow">For yards &amp; coaches</div>
     <h1>Your next horse owner is<br>already <em>looking</em>.</h1>
@@ -84,16 +87,16 @@
 <section class="dark-band">
   <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
     <div>
-      <div class="eyebrow">Founding Farms</div>
+      <div class="eyebrow">Founding Yards</div>
       <h2>Be first on the yard sheet.</h2>
       <p>The first cohort gets reduced commission for life, featured placement, and us setting up your first listing by hand. Spaces are capped on purpose.</p>
-      <a href="index.html?role=yard#waitlist" class="btn-primary">Apply as a Founding Farm</a>
+      <a href="index.html?role=yard#waitlist" class="btn-primary">Apply as a Founding Yard</a>
     </div>
     <div class="badge-card">
       <div class="row"><span>Listing fees</span><b>None</b></div>
       <div class="row"><span>First 3 bookings</span><b>No commission</b></div>
       <div class="row"><span>Standard commission</span><b>3–5% per booking</b></div>
-      <div class="row"><span>Founding Farm commission</span><b>Reduced, for life</b></div>
+      <div class="row"><span>Founding Yard commission</span><b>Reduced, for life</b></div>
     </div>
   </div>
 </section>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore the details, facilities and care offered by this Equivoa directory listing.">
 <title>Listing | Equivoa</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="equivoa.css">
 </head>
 <body>
+<a class="skip-link" href="#listingRoot">Skip to content</a>
 
 <header>
   <nav>
@@ -19,7 +21,7 @@
       Equivoa
     </a>
     <div class="nav-right">
-      <div class="navlinks">
+      <div class="navlinks" id="primary-navigation">
         <a href="how-it-works.html">How it works</a>
         <a href="find.html" aria-current="page">Find a place</a>
         <a href="list-your-yard.html">List your yard</a>
@@ -27,10 +29,11 @@
         <a href="account.html" id="navAuthLink">Sign in</a>
       </div>
       <a href="find.html" class="nav-cta">Build your profile</a>
-      <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
+
 
 <div id="listingRoot"><!-- rendered by equivoa.js from ?id= --></div>
 

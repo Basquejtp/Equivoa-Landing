@@ -1,6 +1,6 @@
 /* ============================================================
    EQUIVOA - SHARED APP LOGIC
-   Data model + matching engine + page wiring, plus optional
+   Matching engine + page wiring, plus optional
    Supabase-backed accounts and saved preferences (see the
    SUPABASE section below). Everything degrades gracefully:
    until equivoa-config.js has real keys in it, the site behaves
@@ -47,82 +47,14 @@ const GROUPS = [
 
 const WEIGHT_NAME = {1:'Preferred', 2:'Important', 3:'Requirement'};
 
-/* ---------- Seed listings (spec section 20) ---------- */
-const SEED_LISTINGS = [
-  {
-    id:'EQ-0142', name:'Hazel Copse Livery', location:'Somerset', type:'Full-service yard',
-    accommodation:'Stable + turnout', spaces:3, lat:51.03, lng:-3.42,
-    attrs:['turnout-2x','turnout-individual','care-full','care-hay','care-mucking','care-rugs','care-checks','facility-indoor','facility-outdoor','facility-hacking','facility-washbay','facility-tackroom','training-weekly','activity-clinics'],
-    price:{model:'BOOK', amount:650, period:'month', label:'Full Care Package'},
-    extras:[{name:'3x daily turnout', amount:50},{name:'Weekly private lesson', amount:45},{name:'Clipping (per session)', amount:35}],
-    description:'A full-service yard on the edge of Exmoor, built for owners who want their horse properly looked after without giving up arena time or hacking.'
-  },
-  {
-    id:'EQ-0209', name:'Fenway Farm DIY', location:'Devon', type:'DIY livery',
-    accommodation:'Stable + grazing', spaces:5, lat:50.79, lng:-3.68,
-    attrs:['turnout-2x','turnout-group','turnout-flexible','care-basic','facility-outdoor','facility-hacking','facility-tackroom','activity-social'],
-    price:{model:'BOOK', amount:48, period:'week', label:'DIY Livery'},
-    extras:[{name:'Extra hay net (per week)', amount:6}],
-    description:'A friendly, sociable DIY yard where owners manage their own horse\u2019s care day to day, with good hacking straight from the gate.'
-  },
-  {
-    id:'EQ-0317', name:'Oakridge Performance Yard', location:'Surrey', type:'Competition yard',
-    accommodation:'Stable + individual turnout', spaces:1, lat:51.19, lng:-0.58,
-    attrs:['turnout-1x','turnout-individual','care-full','care-checks','facility-indoor','facility-outdoor','facility-walker','facility-washbay','training-multiple','training-coach','training-competition','activity-shows','activity-clinics'],
-    price:{model:'POA', label:'Bespoke competition package'},
-    extras:[],
-    description:'A serious competition yard with a full training programme, built for horses actively campaigning at affiliated level.'
-  },
-  {
-    id:'EQ-0455', name:'Willow Bank Private Livery', location:'Sussex', type:'Small private yard',
-    accommodation:'Stable + individual turnout', spaces:2, lat:50.99, lng:-0.36,
-    attrs:['turnout-2x','turnout-individual','turnout-flexible','care-full','care-hay','care-rugs','facility-outdoor','facility-hacking'],
-    price:{model:'ENQUIRE', amount:520, period:'month', label:'Private Full Livery'},
-    extras:[],
-    description:'A small, quiet family-run yard with only a handful of horses at any time, which suits owners who want a lot of individual attention.'
-  },
-  {
-    id:'EQ-0521', name:'Bridleway Equestrian Training Centre', location:'Warwickshire', type:'Training yard',
-    accommodation:'Stable + group turnout', spaces:4, lat:52.31, lng:-1.63,
-    attrs:['turnout-1x','turnout-group','care-basic','care-mucking','facility-indoor','facility-outdoor','facility-walker','training-weekly','training-multiple','training-coach','activity-clinics','activity-shows'],
-    price:{model:'ENQUIRE', amount:395, period:'month', label:'Training Livery'},
-    extras:[{name:'Competition day support', amount:60}],
-    description:'Built around instruction: multiple lessons a week are part of the culture here, not an add-on, with regular in-house clinics.'
-  },
-  {
-    id:'EQ-0630', name:'Meadowcroft Retirement Grazing', location:'Somerset', type:'Retirement grazing',
-    accommodation:'Grass grazing', spaces:6, lat:51.06, lng:-3.05,
-    attrs:['turnout-group','turnout-flexible','care-basic','facility-hacking'],
-    price:{model:'BOOK', amount:22, period:'week', label:'Retirement Grazing'},
-    extras:[],
-    description:'Low-key, low-cost grazing for retired or resting horses, with daily checks included and minimal handling required.'
-  },
-  {
-    id:'EQ-0748', name:'Kestrel Stables', location:'Yorkshire', type:'Standard livery yard',
-    accommodation:'Stable + turnout', spaces:4, lat:54.28, lng:-1.03,
-    attrs:['turnout-2x','turnout-group','care-basic','care-hay','care-mucking','facility-outdoor','facility-tackroom','activity-social'],
-    price:{model:'BOOK', amount:58, period:'week', label:'Standard Livery'},
-    extras:[{name:'Rug changes (per week)', amount:8}],
-    description:'A straightforward, well-run yard on the North York Moors edge: no frills, reliable basic care, an easy-going crowd.'
-  },
-  {
-    id:'EQ-0812', name:'Somerset Grazing Meadows', location:'Somerset', type:'Grass grazing',
-    accommodation:'Grass grazing only', spaces:8, lat:51.09, lng:-2.88,
-    attrs:['turnout-group','turnout-flexible','facility-hacking'],
-    price:{model:'BOOK', amount:18, period:'week', label:'Grass Grazing'},
-    extras:[],
-    description:'Simple grazing-only fields for owners who manage everything else themselves, with direct access onto bridleways.'
-  }
-];
-
-/* ---------- Listings: real DB when configured, seed data otherwise ---------- */
+/* ---------- Listings: published database records only ---------- */
 let _listingsCache = null;
 
 async function loadListings(){
-  if(!sb) return SEED_LISTINGS;
+  if(!sb) return [];
   try{
     const { data, error } = await sb.from('listings').select('*');
-    if(error || !data || data.length === 0) return SEED_LISTINGS;
+    if(error || !data || data.length === 0) return [];
     return data.map(row => ({
       id: row.id,
       name: row.name,
@@ -139,7 +71,7 @@ async function loadListings(){
       availableFrom: row.available_from,
       providerId: row.provider_id
     }));
-  } catch(e){ console.error('Loading listings failed', e); return SEED_LISTINGS; }
+  } catch(e){ console.error('Loading listings failed', e); return []; }
 }
 
 async function getListings(){
@@ -304,7 +236,7 @@ async function toggleFavorite(userId, listingId, turnOn){
 }
 
 async function joinWaitlist(email, role){
-  if(!sb) return { ok:true, offline:true };
+  if(!sb) return { ok:false, offline:true, error:'not_configured' };
   try{
     const { error } = await sb.from('waitlist').insert({ email, role });
     return { ok: !error, error };
@@ -346,9 +278,17 @@ async function initAuthUI(){
 function initNav(){
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.navlinks');
-  if(toggle && links){
-    toggle.addEventListener('click', ()=> links.classList.toggle('open'));
-  }
+  if(!toggle || !links) return;
+  const closeMenu = ()=>{
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  };
+  toggle.addEventListener('click', ()=>{
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.querySelectorAll('a').forEach(link=>link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeMenu(); });
 }
 
 /* ============================================================
@@ -517,7 +457,9 @@ async function initFindPage(){
     }
 
     if(scored.length === 0){
-      matchList.innerHTML = `<div class="empty-state">Nothing matches these filters yet. Try widening the price range or turning off "Favourites only".</div>`;
+      matchList.innerHTML = allListings.length
+        ? `<div class="empty-state"><strong>No places match those settings.</strong><br>Try widening your price range, changing a requirement or turning off “Favourites only”.</div>`
+        : `<div class="empty-state"><strong>The directory is getting started.</strong><br>There are no published places yet. You can save your preferences now and return when yards begin listing.</div>`;
     } else {
       matchList.innerHTML = scored.map(({listing,score,matched,missing})=>{
         const price = formatPrice(listing.price);
@@ -650,8 +592,16 @@ async function initListingPage(){
   if(!root) return;
   const params = new URLSearchParams(location.search);
   const allListings = await getListings();
-  const id = params.get('id') || allListings[0].id;
-  const listing = allListings.find(l=>l.id===id) || allListings[0];
+  if(!allListings.length){
+    root.innerHTML = `<section class="page-hero"><div class="wrap"><div class="eyebrow">Directory</div><h1>Listings are <em>being added</em>.</h1><p class="lede">There are no published places to show just yet. Check back as yards join Equivoa.</p><div class="hero-ctas"><a href="find.html" class="btn-primary">Back to search</a><a href="list-your-yard.html" class="btn-secondary">List your yard</a></div></div></section>`;
+    return;
+  }
+  const id = params.get('id');
+  const listing = allListings.find(l=>l.id===id);
+  if(!listing){
+    root.innerHTML = `<section class="page-hero"><div class="wrap"><div class="eyebrow">Directory</div><h1>This listing isn't <em>available</em>.</h1><p class="lede">It may have been removed or the link may be out of date.</p><div class="hero-ctas"><a href="find.html" class="btn-primary">Return to places</a></div></div></section>`;
+    return;
+  }
   const prefs = prefsFromParams(params);
   const hasPrefs = Object.keys(prefs).length > 0;
   const {score, matched, missing} = hasPrefs ? scoreListing(listing, prefs) : {score:null,matched:[],missing:[]};
@@ -780,16 +730,33 @@ function initWaitlistForm(){
     const radio = form.querySelector(`input[name="role"][value="${role}"]`);
     if(radio) radio.checked = true;
   }
+  let feedback = form.querySelector('.form-feedback');
+  if(!feedback){
+    feedback = document.createElement('p');
+    feedback.className = 'form-feedback';
+    feedback.setAttribute('aria-live','polite');
+    feedback.style.cssText = 'max-width:440px;margin:16px auto 0;font-size:13px;';
+    form.appendChild(feedback);
+  }
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const btn = form.querySelector('button');
-    const email = form.querySelector('#email').value;
-    const selectedRole = form.querySelector('input[name="role"]:checked').value;
+    const email = form.querySelector('#email').value.trim();
+    const selectedRole = form.querySelector('input[name="role"]:checked')?.value || 'rider';
     btn.textContent = 'Joining…';
     btn.disabled = true;
+    feedback.textContent = '';
     const result = await joinWaitlist(email, selectedRole);
-    btn.textContent = result.ok ? "You're on the list." : 'Something went wrong. Try again';
-    if(!result.ok){ btn.disabled = false; }
+    if(result.ok){
+      btn.textContent = "You're on the list.";
+      feedback.textContent = 'Thanks. Your details have been received.';
+    } else {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      feedback.textContent = result.offline
+        ? 'The waitlist is not connected at the moment. Please try again later.'
+        : 'We could not submit that just now. Please check your email and try again.';
+    }
   });
 }
 
