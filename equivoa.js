@@ -419,7 +419,8 @@ async function initFindPage(){
     <div id="mapView"></div>`;
   matchList.insertAdjacentHTML('beforebegin', filterBarHtml);
 
-  document.getElementById('locationInput').addEventListener('input', e=>{ locationQuery = e.target.value.trim().toLowerCase(); renderMatches(); });\n  document.getElementById('neededByInput').addEventListener('change', e=>{ neededBy = e.target.value || null; renderMatches(); });
+  document.getElementById('locationInput').addEventListener('input', e=>{ locationQuery = e.target.value.trim().toLowerCase(); renderMatches(); });
+  document.getElementById('neededByInput').addEventListener('change', e=>{ neededBy = e.target.value || null; renderMatches(); });
   document.getElementById('priceMinInput').addEventListener('input', e=>{ priceMin = e.target.value ? parseFloat(e.target.value) : null; renderMatches(); });
   document.getElementById('priceMaxInput').addEventListener('input', e=>{ priceMax = e.target.value ? parseFloat(e.target.value) : null; renderMatches(); });
   document.getElementById('savedOnlyToggle').addEventListener('change', e=>{ savedOnly = e.target.checked; renderMatches(); });
