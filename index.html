@@ -3,200 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Find paddocks, livery yards and riding schools that suit your horse. Compare facilities, care and availability with Equivoa.">
-<title>Equivoa | Find the Right Place for Your Horse</title>
+<meta name="description" content="A considered way to find paddocks, livery yards and riding schools. Set your priorities and discover places that suit your horse.">
+<title>Equivoa | A better place to begin</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="equivoa.css">
-<style>
-  .hero{padding:88px 0 60px; overflow:hidden;}
-  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
-  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
-  .hero h1{font-family:var(--serif); font-weight:600; font-size:clamp(42px,6vw,70px); line-height:1.04; letter-spacing:-0.5px; color:var(--green-deep);}
-  .hero h1 em{font-style:italic; color:var(--tan-saddle); font-weight:500;}
-  .hero p.lede{font-size:18.5px; max-width:480px; margin-top:24px; color:rgba(20,32,26,0.75); line-height:1.6;}
-  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
-  .hero-note{font-size:12.5px; color:rgba(20,32,26,0.55); margin-top:16px; font-family:var(--mono);}
-  .ledger{padding:80px 0 30px; border-top:1px solid var(--line);}
-</style>
 </head>
-<body>
+<body class="luxury-home">
 <a class="skip-link" href="#content-start">Skip to content</a>
-
-<header>
+<header class="lux-header">
   <nav>
-    <a href="index.html" class="logo">
-      <svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/>
-        <rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/>
-        <rect x="12" y="12" width="20" height="6" fill="#a9673d"/>
-        <rect x="12" y="28" width="20" height="6" fill="#a9673d"/>
-        <circle cx="30" cy="15" r="2" fill="#1f3327"/>
-      </svg>
-      Equivoa
-    </a>
+    <a href="index.html" class="logo"><span class="brand-mark">E</span><span>Equivoa</span></a>
     <div class="nav-right">
       <div class="navlinks" id="primary-navigation">
-        <a href="how-it-works.html">How it works</a>
-        <a href="find.html">Find a place</a>
-        <a href="list-your-yard.html">List your yard</a>
+        <a href="find.html">Find your yard</a>
+        <a href="how-it-works.html">Our approach</a>
+        <a href="list-your-yard.html">For yard owners</a>
         <a href="about.html">About</a>
         <a href="account.html" id="navAuthLink">Sign in</a>
       </div>
-      <a href="find.html" class="nav-cta">Build your profile</a>
+      <a href="find.html" class="nav-cta">Find your place <span aria-hidden="true">↗</span></a>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 
+<main>
+<section id="content-start" tabindex="-1" class="lux-hero">
+  <div class="lux-hero-copy">
+    <div class="eyebrow"><span class="eyebrow-rule"></span> THE EQUESTRIAN DIRECTORY, CONSIDERED</div>
+    <h1>A better place<br>to <em>begin.</em></h1>
+    <p class="lux-lede">The right yard is more than a postcode and a price. It is the way your horse lives, the care they receive and the things you value every day.</p>
+    <div class="lux-hero-actions">
+      <a href="find.html" class="lux-button lux-button-brass">Find your yard <span>↗</span></a>
+      <a href="#the-equivoa-difference" class="lux-text-link">Discover Equivoa <span>↓</span></a>
+    </div>
+    <div class="lux-hero-caption"><span>01 / 03</span><span>PADDOCKS · LIVERY · RIDING</span></div>
+  </div>
+  <div class="lux-hero-art" aria-label="Equivoa equestrian line illustration">
+    <div class="art-topline"><span>FIELD NOTES</span><span>EST. 2026</span></div>
+    <svg class="horse-drawing" viewBox="0 0 620 650" role="img" aria-label="Abstract fine-line drawing of a horse">
+      <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#b99c69" stroke-opacity=".18" stroke-width=".7"/></pattern></defs>
+      <rect width="620" height="650" fill="url(#grid)"/>
+      <circle cx="315" cy="300" r="235" fill="none" stroke="#b99c69" stroke-opacity=".45" stroke-width="1"/>
+      <circle cx="315" cy="300" r="208" fill="none" stroke="#b99c69" stroke-opacity=".25" stroke-width="1" stroke-dasharray="2 7"/>
+      <path d="M170 478 C190 420 190 350 224 288 C249 240 291 209 334 191 C363 179 389 159 403 126 C415 99 438 86 459 95 C482 105 483 133 470 154 C457 176 435 188 416 198 C431 218 453 230 471 250 C491 273 496 306 483 332 C470 359 444 378 419 393 C397 407 385 437 387 473 M221 289 C196 274 179 253 176 226 C173 199 188 176 210 164 C233 151 260 156 279 174 C294 188 300 210 295 229 M334 191 C321 169 320 145 329 126 C338 108 355 97 374 98 M420 199 C405 221 395 247 396 274 C397 300 414 322 437 336 M221 289 C252 301 287 303 316 288 C346 273 368 246 396 224 M204 355 C244 372 282 373 320 359 C356 346 383 323 409 299 M192 420 C239 435 290 430 332 410 C356 398 374 381 393 362 M173 478 C231 499 299 491 351 463 C367 455 379 444 387 431" fill="none" stroke="#d2b77f" stroke-width="1.65" stroke-linecap="round"/>
+      <path d="M406 127 C394 107 390 82 398 62 M430 116 C439 96 453 82 472 75 M461 153 C481 159 496 172 505 190 M472 250 C497 250 520 261 533 279 M482 332 C502 344 514 365 514 386 M419 393 C437 414 447 440 444 467 M387 473 C400 492 408 514 406 536 M170 478 C152 498 139 521 134 545" fill="none" stroke="#8d7049" stroke-width="1.1"/>
+      <path d="M458 132 l12 3 M445 143 l12 3" stroke="#e5d3ac" stroke-width="2" stroke-linecap="round"/>
+      <path d="M120 560 H500" stroke="#b99c69" stroke-opacity=".45"/>
+      <text x="120" y="588" fill="#cbb88f" font-family="IBM Plex Mono" font-size="9" letter-spacing="3">A MORE PERSONAL WAY TO FIND YOUR PLACE</text>
+    </svg>
+    <div class="art-index"><span>EQ / 001</span><span>THE YARD, RECONSIDERED</span></div>
+  </div>
+</section>
 
-<section id="content-start" tabindex="-1" class="hero">
-  <div class="wrap hero-grid">
+<section class="lux-intro-strip" id="the-equivoa-difference">
+  <div class="lux-strip-label">THE EQUIVOA APPROACH</div>
+  <p>Not a directory to scroll through. A search shaped around <em>your horse</em>, your routine and what matters to you.</p>
+</section>
+
+<section class="find-yard-section">
+  <div class="lux-section-head">
     <div>
-      <div class="eyebrow">Launching UK-wide · 2026</div>
-      <h1>Find the right<br><em>place</em> for your horse.</h1>
-      <p class="lede">Equivoa learns what actually matters to you: turnout, care, facilities, training, and surfaces the paddocks, stables and riding schools that genuinely fit. No endless filters. No scrolling past a hundred irrelevant listings.</p>
-      <div class="hero-ctas">
-        <a href="find.html" class="btn-primary">Build your profile</a>
-        <a href="find.html" class="btn-secondary">Explore places</a>
-      </div>
-      <div class="hero-note">NO FEES FOR YOUR FIRST 3 BOOKINGS · WE ONLY EARN WHEN YOU DO</div>
+      <div class="eyebrow"><span class="eyebrow-rule"></span> YOUR SEARCH, YOUR PRIORITIES</div>
+      <h2>Find your <em>yard.</em></h2>
     </div>
-    <div class="hero-editorial" aria-label="Equivoa services">
-      <div class="editorial-topline"><span>THE EQUIVOA DIRECTORY</span><span>01 — 03</span></div>
-      <div class="editorial-title">Good places<br>for good horses.</div>
-      <p class="editorial-intro">A clearer way to find the right setting, whether you need grazing, a stable, day-to-day care or somewhere to ride.</p>
-      <div class="editorial-index">
-        <a href="find.html"><span class="index-no">01</span><span><b>Grazing &amp; paddocks</b><small>Space, turnout and field care</small></span><span class="index-arrow">↗</span></a>
-        <a href="find.html"><span class="index-no">02</span><span><b>Livery &amp; stabling</b><small>From DIY to full care</small></span><span class="index-arrow">↗</span></a>
-        <a href="find.html"><span class="index-no">03</span><span><b>Riding &amp; training</b><small>Schools, lessons and facilities</small></span><span class="index-arrow">↗</span></a>
-      </div>
-      <div class="editorial-foot">BUILT AROUND THE DETAILS THAT MATTER TO YOU</div>
-    </div>
+    <p>Start with the details that make a difference. Set the things you need, the things you would value and the things you can be flexible about.</p>
+  </div>
+  <div class="preference-showcase">
+    <a class="preference-tile" href="find.html#preferences"><span class="tile-number">01</span><span class="tile-title">Turnout</span><span class="tile-desc">Frequency, individual or group turnout, flexibility.</span><span class="tile-arrow">↗</span></a>
+    <a class="preference-tile" href="find.html#preferences"><span class="tile-number">02</span><span class="tile-title">Care</span><span class="tile-desc">Daily checks, mucking out, hay and rug changes.</span><span class="tile-arrow">↗</span></a>
+    <a class="preference-tile" href="find.html#preferences"><span class="tile-number">03</span><span class="tile-title">Facilities</span><span class="tile-desc">Arenas, hacking, wash bays and practical extras.</span><span class="tile-arrow">↗</span></a>
+    <a class="preference-tile" href="find.html#preferences"><span class="tile-number">04</span><span class="tile-title">Training</span><span class="tile-desc">Coaching, lessons and competition support.</span><span class="tile-arrow">↗</span></a>
+    <a class="preference-tile" href="find.html#preferences"><span class="tile-number">05</span><span class="tile-title">Yard life</span><span class="tile-desc">The atmosphere, setting and community.</span><span class="tile-arrow">↗</span></a>
+  </div>
+  <div class="find-yard-footer">
+    <div><span class="small-kicker">A SEARCH THAT UNDERSTANDS THE DETAILS</span><p>Choose what is essential, important or simply preferred. Your results explain why a place may suit you, including near-matches.</p></div>
+    <a href="find.html" class="lux-button lux-button-dark">Set your preferences <span>↗</span></a>
   </div>
 </section>
 
-<section class="ledger" id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Why Equivoa</div>
-      <h2>The right setup isn't always the one with the most boxes ticked.</h2>
-      <p>Equestrian accommodation is complicated. A yard might mix stabling, grazing, care levels and training in dozens of combinations. So instead of forcing every yard into "DIY / Part / Full", Equivoa lets providers describe what they actually offer, and matches you on what matters to you specifically.</p>
+<section class="lux-match-section">
+  <div class="lux-match-image">
+    <div class="match-image-inner">
+      <div class="match-stamp">EQUIVOA<br>FIELD GUIDE</div>
+      <div class="match-line"></div>
+      <div class="match-caption">A GOOD MATCH IS PERSONAL.</div>
     </div>
-
-    <div class="ledger-row">
-      <div class="ledger-num">01</div>
-      <div class="ledger-title">Tell us what matters</div>
-      <div class="ledger-desc">A few honest questions about turnout, care, facilities and training, not a 40-field form. Mark what's a must-have and what's just nice to have.</div>
-    </div>
-
-    <div class="ledger-row">
-      <div class="ledger-num">02</div>
-      <div class="ledger-title">See real matches, not a wall of listings</div>
-      <div class="ledger-desc">Every place is scored against what you asked for, with a plain-English reason why, including close matches that are missing one thing, because you might not mind.</div>
-    </div>
-
-    <div class="ledger-row">
-      <div class="ledger-num">03</div>
-      <div class="ledger-title">Enquire, book, or ask for a quote</div>
-      <div class="ledger-desc">Simple listings book instantly. Complex or bespoke ones go to enquiry or a quote. We don't pretend every yard can be booked like a hotel room.</div>
-    </div>
+  </div>
+  <div class="lux-match-copy">
+    <div class="eyebrow"><span class="eyebrow-rule"></span> MORE THAN A CHECKLIST</div>
+    <h2>Good matches.<br><em>Clearly explained.</em></h2>
+    <p>Some things are non-negotiable. Others are a preference, not a deal-breaker. Equivoa keeps that distinction, ranks places around your priorities and shows you where a yard fits, and where it does not.</p>
+    <a href="how-it-works.html" class="lux-text-link">How matching works <span>↗</span></a>
   </div>
 </section>
 
-<section class="how" style="padding:80px 0; border-top:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Also on Equivoa</div>
-      <h2 style="font-size:clamp(26px,3.4vw,34px);">Riding schools, the same way.</h2>
-      <p>Lesson blocks, hacks and clinics, listed with real availability and booked by the session, not chased over the phone.</p>
-    </div>
-    <a href="find.html" class="btn-secondary">Browse riding schools</a>
-  </div>
+<section class="lux-categories">
+  <div class="lux-categories-head"><div class="eyebrow"><span class="eyebrow-rule"></span> EXPLORE THE DIRECTORY</div><p>Different places. One considered way to find them.</p></div>
+  <div class="lux-category-row"><span>01</span><h3>Grazing &amp; paddocks</h3><p>Space, turnout and field care.</p><a href="find.html">Explore <span>↗</span></a></div>
+  <div class="lux-category-row"><span>02</span><h3>Livery &amp; stabling</h3><p>From DIY arrangements to full care.</p><a href="find.html">Explore <span>↗</span></a></div>
+  <div class="lux-category-row"><span>03</span><h3>Riding &amp; training</h3><p>Schools, lessons and facilities.</p><a href="find.html">Explore <span>↗</span></a></div>
 </section>
 
-<section class="dark-band" id="founding">
-  <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
-    <div>
-      <div class="eyebrow">Founding Yards</div>
-      <h2>Be first on the yard sheet.</h2>
-      <p>Founding Yards get preferential placement, reduced commission for life, and hands-on help listing their yard properly, service by service, not squeezed into three generic tiers. Spaces are limited on purpose.</p>
-      <a href="index.html?role=yard#waitlist" class="btn-primary">Apply as a Founding Yard</a>
-    </div>
-    <div class="badge-card">
-      <div class="row"><span>Status</span><b>Founding Yard</b></div>
-      <div class="row"><span>Commission, locked</span><b>Reduced, for life</b></div>
-      <div class="row"><span>First 3 bookings</span><b>No fees</b></div>
-      <div class="row"><span>Directory placement</span><b>Featured</b></div>
-      <div class="row"><span>Onboarding</span><b>1:1, by hand</b></div>
-    </div>
-  </div>
+<section class="lux-yard-owners">
+  <div><div class="eyebrow"><span class="eyebrow-rule"></span> FOR YARD OWNERS</div><h2>Your yard deserves<br>to be <em>found.</em></h2><p>Present your facilities, services and availability clearly. Help the right owners understand what makes your place different.</p><a href="list-your-yard.html" class="lux-button lux-button-brass">List your yard <span>↗</span></a></div>
+  <div class="yard-owner-note"><span>THE EQUIVOA STANDARD</span><p>Thoughtful listings.<br>Clear information.<br>Better enquiries.</p><small>FOUNDING YARDS · 2026</small></div>
 </section>
 
-<section class="waitlist" id="waitlist">
-  <div class="wrap">
-    <h2>Get in before the gate opens.</h2>
-    <p>Tell us who you are and we'll bring you in with the first cohort, as a rider, a yard, or a coach.</p>
+<section class="lux-waitlist" id="waitlist">
+  <div class="waitlist-inner">
+    <div class="eyebrow"><span class="eyebrow-rule"></span> THE FIRST CHAPTER</div>
+    <h2>Be part of what<br>comes <em>next.</em></h2>
+    <p>Join the Equivoa list as a horse owner, yard or coach. We will be in touch as the directory opens.</p>
     <form id="waitlistForm">
-      <div class="form-row">
-        <label class="sr-only" for="email">Email address</label>
-        <input id="email" type="email" placeholder="you@email.com" required>
-        <button type="submit" class="btn-primary">Join the waitlist</button>
-      </div>
+      <div class="lux-form-row"><label class="sr-only" for="email">Email address</label><input id="email" type="email" placeholder="Your email address" required><button type="submit">Join the list <span>↗</span></button></div>
       <div class="role-toggle">
-        <label><input type="radio" name="role" value="rider" style="margin-right:6px;" checked><span>I'm a rider / owner</span></label>
-        <label><input type="radio" name="role" value="yard" style="margin-right:6px;"><span>I run a yard</span></label>
-        <label><input type="radio" name="role" value="coach" style="margin-right:6px;"><span>I teach / coach</span></label>
+        <label><input type="radio" name="role" value="rider" checked><span>Horse owner / rider</span></label>
+        <label><input type="radio" name="role" value="yard"><span>Yard owner</span></label>
+        <label><input type="radio" name="role" value="coach"><span>Coach / instructor</span></label>
       </div>
     </form>
   </div>
 </section>
+</main>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo">
-          <svg class="mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="6" width="6" height="32" rx="1" fill="#1f3327"/>
-            <rect x="32" y="6" width="6" height="32" rx="1" fill="#1f3327"/>
-            <rect x="12" y="12" width="20" height="6" fill="#a9673d"/>
-            <rect x="12" y="28" width="20" height="6" fill="#a9673d"/>
-            <circle cx="30" cy="15" r="2" fill="#1f3327"/>
-          </svg>
-          Equivoa
-        </div>
-        <p>Paddocks, stables and riding schools, all under one roof, built for UK horse owners and the yards that look after them.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="find.html">Find a place</a>
-          <a href="profile.html">Your profile</a>
-          <a href="how-it-works.html">How it works</a>
-        </div>
-        <div class="footer-col">
-          <h4>For yards</h4>
-          <a href="list-your-yard.html">List your yard</a>
-          <a href="my-listings.html">My listings</a>
-          <a href="for-yards.html">Why Equivoa</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About</a>
-          <a href="our-story.html">Our story</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="account.html">Sign in</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="fine">© 2026 EQUIVOA</div>
-      <div class="fine">PADDOCKS · STABLES · RIDING SCHOOLS</div>
-    </div>
-  </div>
+<footer class="lux-footer">
+  <div class="lux-footer-main"><a href="index.html" class="logo"><span class="brand-mark">E</span><span>Equivoa</span></a><p>A more considered way to find the right place for your horse.</p><div class="lux-footer-links"><div><b>DISCOVER</b><a href="find.html">Find your yard</a><a href="how-it-works.html">Our approach</a><a href="profile.html">Your profile</a></div><div><b>FOR YARDS</b><a href="list-your-yard.html">List your yard</a><a href="for-yards.html">Why Equivoa</a><a href="my-listings.html">My listings</a></div><div><b>ABOUT</b><a href="about.html">About</a><a href="our-story.html">Our story</a><a href="privacy.html">Privacy</a><a href="account.html">Sign in</a></div></div></div>
+  <div class="lux-footer-bottom"><span>© 2026 EQUIVOA</span><span>PADDOCKS · LIVERY · RIDING</span><span>MADE FOR THE DETAILS THAT MATTER</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
