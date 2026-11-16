@@ -1596,3 +1596,25 @@ footer .fine {
   margin-top: 20px;
 }
 
+
+
+/* ===== Editorial homepage refinement ===== */
+.hero{padding:76px 0 72px;}
+.hero-grid{grid-template-columns:1.02fr .98fr;gap:clamp(36px,6vw,88px);}
+.hero h1{font-size:clamp(48px,6.2vw,78px);letter-spacing:-1.5px;line-height:.98;}
+.hero p.lede{max-width:510px;font-size:17px;line-height:1.75;}
+.hero-note{font-size:10px;letter-spacing:1.05px;line-height:1.7;}
+.hero-editorial{position:relative;background:#e7e0d0;min-height:470px;padding:28px 34px 24px;display:flex;flex-direction:column;justify-content:space-between;border-top:3px solid var(--tan-saddle);color:var(--green-deep);}
+.editorial-topline,.editorial-foot{display:flex;justify-content:space-between;gap:16px;font:10px var(--mono);letter-spacing:1.35px;color:rgba(20,32,26,.62);}
+.editorial-title{font:500 clamp(42px,5vw,64px)/.94 var(--serif);letter-spacing:-1px;margin:38px 0 14px;max-width:430px;}
+.editorial-intro{font-size:14px;line-height:1.7;color:rgba(20,32,26,.72);max-width:360px;margin-bottom:26px;}
+.editorial-index{border-top:1px solid rgba(20,32,26,.22);}
+.editorial-index a{display:grid;grid-template-columns:34px 1fr 20px;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(20,32,26,.22);}
+.editorial-index a:hover b{color:var(--tan-saddle);}
+.editorial-index .index-no{font:11px var(--mono);color:var(--tan-saddle);}
+.editorial-index b{display:block;font:600 15px var(--sans);transition:color .15s;}
+.editorial-index small{display:block;margin-top:3px;font:12px var(--sans);color:rgba(20,32,26,.62);}
+.editorial-index .index-arrow{font-size:17px;text-align:right;color:var(--tan-saddle);}
+.editorial-foot{margin-top:24px;font-size:9px;letter-spacing:1.1px;}
+@media(max-width:900px){.hero{padding:56px 0 48px}.hero-grid{grid-template-columns:1fr;gap:42px}.hero-editorial{min-height:420px;}}
+@media(max-width:560px){.hero h1{font-size:clamp(46px,13vw,62px)}.hero-editorial{padding:22px 22px 20px;min-height:400px}.editorial-title{font-size:48px;margin-top:28px}.editorial-foot{font-size:8px;}}
